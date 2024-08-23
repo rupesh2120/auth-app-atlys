@@ -13,14 +13,7 @@ const Register: React.FC = () => {
   
 
   const handleRegister = () => {
-    // Add your register logic here
     register(email, username, password);
-    // if (success) {
-    //   navigate('/dashboard'); // Redirect to dashboard on successful login
-    // } else {
-    //   // Handle login failure, e.g., show an error message
-    //   alert('Invalid email/username or password');
-    // }
   };
 
   return (
@@ -78,7 +71,7 @@ const Register: React.FC = () => {
         
         <p className="mt-4 text-left text-gray-400">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-400 cursor-pointer">
+          <Link to="/login" className="text-white cursor-pointer">
             Login →
           </Link>
         </p>

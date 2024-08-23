@@ -29,9 +29,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const lastActivity = parseInt(localStorage.getItem('lastActivity') || '0', 10);
     const currentTime = new Date().getTime();
   
-    console.log("Logged in:", loggedIn);
-    console.log("Current Path:", window.location.pathname);
-  
     if (!loggedIn || currentTime - lastActivity >= 4 * 60 * 60 * 1000) {
       localStorage.removeItem('isLoggedIn');
       localStorage.removeItem('lastActivity');

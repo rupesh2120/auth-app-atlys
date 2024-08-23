@@ -79,7 +79,7 @@ const Login: React.FC<LoginModalProps> = ({onClose}) => {
         </button>
         <p className="mt-4 text-left text-gray-400">
           Not registered yet?{' '}
-          <Link to="/register" className="text-blue-500 cursor-pointer">
+          <Link to="/register" className="text-white cursor-pointer">
             Register →
           </Link>
         </p>
