@@ -14,43 +14,43 @@ const Register: React.FC = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-black p-4">
       <div className="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">Create an Account</h2>
-        
+        <h2 className="text-sm font-semi-bold text-center text-gray-400">SIGN UP</h2>
+        <h2 className="text-xl font-bold mb-6 text-center text-white">Create an account to continue</h2>
         <div className="mb-4">
-          <label className="block text-gray-300">Email</label>
+          <label className="block text-gray-400">Email</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 border rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-900 text-white"
+            className="w-full p-3 border border-gray-400 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-900 text-white"
             placeholder="Enter your email"
           />
         </div>
         
         <div className="mb-4">
-          <label className="block text-gray-300">Username</label>
+          <label className="block text-gray-400">Username</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-3 border rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-900 text-white"
-            placeholder="Choose a username"
+            className="w-full p-3 border border-gray-400 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-900 text-white"
+            placeholder="Choose a preferred username"
           />
         </div>
         
         <div className="mb-4">
-          <label className="block text-gray-300">Password</label>
+          <label className="block text-gray-400">Password</label>
           <div className="relative">
             <input
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-900 text-white"
-              placeholder="Create a password"
+              className="w-full p-3 border border-gray-400 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-900 text-white"
+              placeholder="Choose a strong password"
             />
             <span
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-3 cursor-pointer text-gray-500"
+              className="absolute right-3 top-3 cursor-pointer text-gray-400"
             >
               👁️
             </span>
@@ -59,14 +59,14 @@ const Register: React.FC = () => {
         
         <button
           onClick={handleRegister}
-          className="w-full bg-blue-500 text-white py-2 rounded mt-4 hover:bg-blue-600 transition-all duration-300"
+          className="w-full bg-blue-400 text-white py-2 rounded mt-4 hover:bg-blue-600 transition-all duration-400"
         >
-          Register
+          Continue
         </button>
         
-        <p className="mt-4 text-center text-gray-400">
+        <p className="mt-4 text-left text-gray-400">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-500 cursor-pointer">
+          <Link to="/login" className="text-blue-400 cursor-pointer">
             Login →
           </Link>
         </p>
