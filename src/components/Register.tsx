@@ -10,6 +10,8 @@ const Register: React.FC = () => {
 
   const { register } = useAuth();
   const navigate = useNavigate();
+
+  console.log("On the Register")
   
 
   const handleRegister = () => {

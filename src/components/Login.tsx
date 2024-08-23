@@ -7,12 +7,15 @@ interface LoginModalProps {
 }
 
 const Login: React.FC<LoginModalProps> = ({onClose}) => {
+  
   const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  console.log("On the login")
 
 
   const handleLogin = () => {
