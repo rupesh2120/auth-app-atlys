@@ -7,9 +7,7 @@ import { AuthProvider } from './context/useAuth';
 import { Comments } from './data/Comments';
 
 const App: React.FC = () => {
-
-  console.log("On the app")
-
+  
   return (
     <AuthProvider>
       <Routes>

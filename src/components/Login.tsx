@@ -15,9 +15,6 @@ const Login: React.FC<LoginModalProps> = ({onClose}) => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  console.log("On the login")
-
-
   const handleLogin = () => {
     const success = login(emailOrUsername, password);
     if (success) {

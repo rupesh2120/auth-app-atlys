@@ -32,8 +32,6 @@ const Dashboard: React.FC<IDashboard> = ({comments}) => {
     setShowLoginModal(true);
   };
 
-  console.log("On the Dashboard", storedUser, comments)
-
   function formatTime(createdAt: string): string {
     const createdTime = new Date(createdAt);
     const currentTime = new Date();
