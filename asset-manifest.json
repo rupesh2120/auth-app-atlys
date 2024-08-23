@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/auth-app-atlys/static/css/main.190cd60d.css",
+    "main.js": "/auth-app-atlys/static/js/main.64dfd017.js",
+    "index.html": "/auth-app-atlys/index.html",
+    "main.190cd60d.css.map": "/auth-app-atlys/static/css/main.190cd60d.css.map",
+    "main.64dfd017.js.map": "/auth-app-atlys/static/js/main.64dfd017.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.190cd60d.css",
+    "static/js/main.64dfd017.js"
+  ]
+}
