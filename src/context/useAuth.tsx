@@ -32,25 +32,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     console.log("Logged in:", loggedIn);
     console.log("Current Path:", window.location.pathname);
   
-    // if (!loggedIn || currentTime - lastActivity >= 4 * 60 * 60 * 1000) {
-    //   localStorage.removeItem('isLoggedIn');
-    //   localStorage.removeItem('lastActivity');
-    //   setIsLoggedIn(false);
-    //   if (window.location.pathname !== '/register') {
-    //     console.log("Redirecting to login");
-    //     navigate('/login');
-    //   }
-    // } else {
-    //   setIsLoggedIn(true);
-    // }
-    console.log("Last activity Path:", currentTime - lastActivity < 4 * 60 * 60 * 1000);
-    if (currentTime - lastActivity < 4 * 60 * 60 * 1000) {
-      console.log("Inside activity Path:");
-      navigate('/dashboard'); // Redirect to dashboard if logged in
-    } else {
+    if (!loggedIn || currentTime - lastActivity >= 4 * 60 * 60 * 1000) {
       localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('lastActivity');
       setIsLoggedIn(false);
-      navigate('/login'); // Redirect to login if not logged in
+      if (window.location.pathname !== '/register') {
+        console.log("Redirecting to login");
+        navigate('/login');
+      }
+    } else {
+      setIsLoggedIn(true);
     }
   }, [navigate]);
 

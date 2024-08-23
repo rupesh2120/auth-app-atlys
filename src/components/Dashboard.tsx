@@ -35,7 +35,17 @@ const Dashboard: React.FC = () => {
 
       {/* Login Modal */}
       {showLoginModal && (
-        <LoginModal onClose={() => setShowLoginModal(false)} />
+        <div className="flex justify-center items-center">
+          <div className="bg-red-800 relative">
+            <button
+              onClick={() => setShowLoginModal(false)}
+              className="absolute top-2 right-2 text-white text-xl"
+            >
+              &times;
+            </button>
+            <LoginModal onClose={() => setShowLoginModal(false)} />
+          </div>
+        </div>
       )}
     </div>
   );
