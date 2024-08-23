@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
@@ -8,38 +8,55 @@ interface AuthContextType {
   logout: () => void;
 }
 
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+interface User {
+  email: string;
+  username: string;
+  password: string;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const lastActivity = parseInt(localStorage.getItem('lastActivity') || '0');
+    const lastActivity = parseInt(localStorage.getItem('lastActivity') || '0', 10);
     const currentTime = new Date().getTime();
-
-    if (loggedIn && currentTime - lastActivity < 4 * 60 * 60 * 1000) {
-      setIsLoggedIn(true);
-    } else {
+  
+    console.log("Logged in:", loggedIn);
+    console.log("Current Path:", window.location.pathname);
+  
+    if (!loggedIn || currentTime - lastActivity >= 4 * 60 * 60 * 1000) {
       localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('lastActivity');
       setIsLoggedIn(false);
-      navigate('/login');
+      if (window.location.pathname !== '/register') {
+        console.log("Redirecting to login");
+        navigate('/login');
+      }
+    } else {
+      setIsLoggedIn(true);
     }
   }, [navigate]);
 
   useEffect(() => {
     if (isLoggedIn) {
-      localStorage.setItem('lastActivity', JSON.stringify(new Date().getTime()));
+      localStorage.setItem('lastActivity', new Date().getTime().toString());
     }
   }, [isLoggedIn]);
 
   const login = (emailOrUsername: string, password: string): boolean => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user: User = JSON.parse(localStorage.getItem('currentuser') || '{}');
     if (user.email === emailOrUsername && user.password === password) {
       setIsLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('lastActivity', JSON.stringify(new Date().getTime()));
+      localStorage.setItem('lastActivity', new Date().getTime().toString());
       navigate('/dashboard');
       return true;
     }
@@ -47,14 +64,15 @@ export const AuthProvider: React.FC = ({ children }) => {
   };
 
   const register = (email: string, username: string, password: string) => {
-    const user = { email, username, password };
-    localStorage.setItem('user', JSON.stringify(user));
+    const user: User = { email, username, password };
+    localStorage.setItem('currentuser', JSON.stringify(user));
     navigate('/login');
   };
 
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('lastActivity'); // Also remove lastActivity on logout
     navigate('/login');
   };
 
