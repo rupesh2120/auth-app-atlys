@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import { AuthProvider } from './context/useAuth';
+import { Comments } from './data/Comments';
 
 const App: React.FC = () => {
   return (
@@ -11,8 +12,8 @@ const App: React.FC = () => {
       <Routes>
       <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Dashboard comments={Comments} />} />
+        <Route path="/dashboard" element={<Dashboard comments={Comments} />} />
       </Routes>
     </AuthProvider>
   );

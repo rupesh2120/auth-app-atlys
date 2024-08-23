@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/useAuth';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -7,8 +8,19 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const { register } = useAuth();
+  const navigate = useNavigate();
+  
+
   const handleRegister = () => {
     // Add your register logic here
+    register(email, username, password);
+    // if (success) {
+    //   navigate('/dashboard'); // Redirect to dashboard on successful login
+    // } else {
+    //   // Handle login failure, e.g., show an error message
+    //   alert('Invalid email/username or password');
+    // }
   };
 
   return (

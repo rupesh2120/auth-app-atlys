@@ -53,7 +53,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = (emailOrUsername: string, password: string): boolean => {
     const user: User = JSON.parse(localStorage.getItem('currentuser') || '{}');
-    if (user.email === emailOrUsername && user.password === password) {
+    if ((user.email === emailOrUsername || user.username === emailOrUsername) && user.password === password) {
       setIsLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('lastActivity', new Date().getTime().toString());
